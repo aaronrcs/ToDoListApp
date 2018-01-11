@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--- This is letting Angular know what the name of the application is-->
+<html ng-app="toDoListApp">
+<head>
+	<title>To-Do List App</title>
+
+
+	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+</head>
+	<body>
+
+		<div class="container" ng-controller="AppCtrl">
+			
+			<h1>To-Do List App!</h1>
+
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Text</th>
+						<th>Due</th>
+						<!-- <th>Status</th> -->
+						<th>&nbsp;</th>
+				
+					</tr>
+
+				</thead>
+				<tbody>
+					<tr>
+						<td><input class="form-control" ng-model="item.title"></td>
+						<td><input class="form-control" ng-model="item.text"></td>
+						<td><input class="form-control" ng-model="item.due"></td>
+						<!-- <td><input class="form-control" ng-model="item.status"></td> -->
+						<td><button class="btn btn-primary" ng-click="addItem(item)">Add To-Do List Item</button></td>
+						<td><button class="btn btn-info" ng-click="update()">Update Item</button>&nbsp;&nbsp; <button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+
+
+					</tr>
+					<tr ng-repeat="item in toDoList">
+						<td>{{item.title}}</td>
+						<td>{{item.text}}</td>
+						<td>{{item.due}}</td>
+						<td>{{item.status}}</td>
+						<td><button class="btn btn-danger" ng-click="remove(item._id)">Remove Item</button></td>
+						<td><button class="btn btn-warning" ng-click="edit(item._id)">Edit Item</button></td>
+						<td><button class="btn btn-info" ng-click="updateStatus(item)">Update Status</button></td>
+						<td><button class="btn btn-info" ng-click="undoStatusUpdate(item)">Undo Status Update</button></td>
+					</tr>
+			
+				</tbody>
+			</table>
+
+		</div>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+			<script src="controllers/toDoController.js"></script>
+
+	</body>
+</html>
